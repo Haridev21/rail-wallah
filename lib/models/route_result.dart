@@ -20,14 +20,16 @@ class RouteResult {
   final List<dynamic>? segments;
   final List<PathStep>? path;
 
-  // ── Fare fields (NEW) ─────────────────────────────────────────────────────
+  
+
   final int? fare; // total estimated fare Rs
   final String? fareClass; // class used e.g. "SL"
   final String? fareBreakdown; // e.g. "Rs135 + Rs90 = Rs225"
   final List<dynamic>? farePerSegment; // [{train_no, class, fare, distance_km}]
   final Map<String, dynamic>? allClassFares; // {"SL":135,"3A":235,"2A":420}
 
-  // ── Budget fields (NEW) ───────────────────────────────────────────────────
+  
+
   final bool? budgetExceeded;
   final int? budget;
   final int? budgetGap;

@@ -15,7 +15,8 @@ class AppTheme {
   static const accentRed = Color(0xFFE53935);
 }
 
-// ── Loading quotes — shown while fetching route ───────────────────────────────
+
+
 const List<String> _loadingQuotes = [
   "Scanning 210,000+ rail connections...",
   "Checking running days across India...",
@@ -399,7 +400,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
       backgroundColor: AppTheme.backgroundColor,
       body: CustomScrollView(
         slivers: [
-          // ── App bar ──────────────────────────────────────────────────────
+          
+
           SliverAppBar(
             expandedHeight: 180,
             floating: false,
@@ -447,14 +449,16 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
             ),
           ),
 
-          // ── Content ──────────────────────────────────────────────────────
+          
+
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.all(20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // ── Journey card ──────────────────────────────────────────
+                  
+
                   _card(
                     child: Column(
                       children: [
@@ -481,7 +485,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
 
                   const SizedBox(height: 16),
 
-                  // ── Travel options card ───────────────────────────────────
+                  
+
                   _card(
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -519,7 +524,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
                         ),
                         const SizedBox(height: 12),
 
-                        // ── Coach preference row (FIXED) ──────────────────
+                        
+
                         Row(
                           children: [
                             const Icon(
@@ -555,7 +561,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
 
                         const SizedBox(height: 12),
 
-                        // ── Coach class row ───────────────────────────────
+                        
+
                         Row(
                           children: [
                             const Icon(
@@ -627,7 +634,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
 
                         const SizedBox(height: 12),
 
-                        // ── Budget row ────────────────────────────────────
+                        
+
                         Row(
                           children: [
                             const Icon(
@@ -691,7 +699,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
 
                   const SizedBox(height: 20),
 
-                  // ── Find Route button ─────────────────────────────────────
+                  
+
                   ScaleTransition(
                     scale: _pulseAnim,
                     child: _gradientButton(
@@ -703,7 +712,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
 
                   const SizedBox(height: 24),
 
-                  // ── Info chips ────────────────────────────────────────────
+                  
+
                   Row(
                     children: [
                       Expanded(
@@ -733,7 +743,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
 
                   const SizedBox(height: 12),
 
-                  // ── Stats row ─────────────────────────────────────────────
+                  
+
                   _card(
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -755,7 +766,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
     );
   }
 
-  // ── Widget helpers ──────────────────────────────────────────────────────────
+  
+
 
   Widget _circle(double size, double opacity) => Container(
     width: size,

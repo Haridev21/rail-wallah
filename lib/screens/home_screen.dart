@@ -86,10 +86,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // Gradient Header Section
+            
+
             _buildHeaderSection(context, isTablet),
 
-            // Main Content
+            
+
             Padding(
               padding: EdgeInsets.all(isTablet ? 24.0 : 16.0),
               child: ConstrainedBox(
@@ -98,11 +100,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
                 child: Column(
                   children: [
-                    // AI Assistant & Updates Row
+                    
+
                     _buildQuickActionsRow(context, isTablet),
                     SizedBox(height: isTablet ? 24 : 20),
 
-                    // Feature Grid
+                    
+
                     _buildFeatureGrid(context, isTablet),
                   ],
                 ),
@@ -136,11 +140,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         ),
         child: Column(
           children: [
-            // Search Bar
+            
+
             _buildSearchBar(context),
             const SizedBox(height: 16),
 
-            // Quick Stats
+            
+
             _buildQuickStats(context, isTablet),
           ],
         ),
@@ -490,7 +496,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               },
             ),
 
-            // ─── NEW: 3D Station Map ───────────────────────────────────────
+            
+
             _buildFeatureCard(
               context: context,
               icon: Icons.map_rounded,
@@ -505,7 +512,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 );
               },
             ),
-            // ──────────────────────────────────────────────────────────────
+            
+
           ],
         ),
       ],

@@ -162,7 +162,8 @@ class PlatformScreen extends StatelessWidget {
     );
   }
 
-  // ── Step 1: Where are you now? ────────────────────────────────────────────
+
+
   void _onStationTapped(BuildContext context, Station station) {
     showModalBottomSheet(
       context: context,
@@ -195,7 +196,8 @@ class PlatformScreen extends StatelessWidget {
     );
   }
 
-  // ── Step 2: Where do you want to go? ─────────────────────────────────────
+
+
   void _showDestinationPicker(
     BuildContext context,
     Station station,
@@ -235,7 +237,8 @@ class PlatformScreen extends StatelessWidget {
   }
 }
 
-// ── Where are you now? bottom sheet ──────────────────────────────────────────
+
+
 class _WhereAreYouSheet extends StatelessWidget {
   final Station station;
   final void Function(StartingPoint sp, bool isFreeView)
@@ -384,7 +387,8 @@ class _LocationTile extends StatelessWidget {
   }
 }
 
-// ── Where do you want to go? bottom sheet ────────────────────────────────────
+
+
 class _WhereToGoSheet extends StatelessWidget {
   final StartingPoint startingPoint;
   final List<Destination> destinations;
@@ -496,7 +500,8 @@ class _DestinationChip extends StatelessWidget {
   }
 }
 
-// ── Station card ──────────────────────────────────────────────────────────────
+
+
 class _StationCard extends StatelessWidget {
   final Station station;
   final VoidCallback onTap;
@@ -628,7 +633,8 @@ class _StationCard extends StatelessWidget {
   }
 }
 
-// ── Stat chip ─────────────────────────────────────────────────────────────────
+
+
 class _StatChip extends StatelessWidget {
   final IconData icon;
   final String label;

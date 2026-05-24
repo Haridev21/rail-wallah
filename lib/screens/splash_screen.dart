@@ -3,14 +3,16 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'home_screen.dart';
 
-// ── Color Palette ────────────────────────────────────────────
+
+
 const Color kBackground = Color(0xFF0D0D0D);
 const Color kCrimson = Color(0xFF7B1A2E);
 const Color kGold = Color(0xFFC9933A);
 const Color kTrackColor = Color(0xFFC9933A);
 const Color kWhite = Color(0xFFFFFFFF);
 
-// ── Entry Point ──────────────────────────────────────────────
+
+
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});
 
@@ -20,7 +22,8 @@ class SplashScreen extends StatefulWidget {
 
 class _SplashScreenState extends State<SplashScreen>
     with TickerProviderStateMixin {
-  // ── Controllers ──────────────────────────────────────────
+  
+
   late final AnimationController _trackCtrl; // Phase 1
   late final AnimationController _logoCtrl; // Phase 2
   late final AnimationController _steamCtrl; // Phase 3
@@ -29,30 +32,37 @@ class _SplashScreenState extends State<SplashScreen>
   late final AnimationController _bgCtrl; // Background topographic pan
   late final AnimationController _pulseCtrl; // Gold ring pulse
 
-  // ── Track draw ───────────────────────────────────────────
+  
+
   late final Animation<double> _trackProgress;
 
-  // ── Logo ─────────────────────────────────────────────────
+  
+
   late final Animation<double> _logoSlide;
   late final Animation<double> _logoOpacity;
   late final Animation<double> _logoBounce;
 
-  // ── Pulse ring ───────────────────────────────────────────
+  
+
   late final Animation<double> _pulseRadius;
   late final Animation<double> _pulseOpacity;
 
-  // ── Steam ────────────────────────────────────────────────
+  
+
   late final Animation<double> _steamProgress;
 
-  // ── Tagline ──────────────────────────────────────────────
+  
+
   late final Animation<double> _taglineOpacity;
   late final Animation<double> _taglineSlide;
 
-  // ── Exit ─────────────────────────────────────────────────
+  
+
   late final Animation<double> _exitScale;
   late final Animation<double> _exitOpacity;
 
-  // ── Background pan ───────────────────────────────────────
+  
+
   late final Animation<Offset> _bgOffset;
 
   @override
@@ -69,7 +79,8 @@ class _SplashScreenState extends State<SplashScreen>
       end: const Offset(0.15, 0.1),
     ).animate(_bgCtrl);
 
-    // Phase 1 — Track Reveal (0.0 → 1.5s)
+
+
     _trackCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -79,7 +90,8 @@ class _SplashScreenState extends State<SplashScreen>
       end: 1,
     ).animate(CurvedAnimation(parent: _trackCtrl, curve: Curves.easeOut));
 
-    // Phase 2 — Logo Entrance (1.2 → 3.5s)
+
+
     _logoCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2300),
@@ -122,14 +134,16 @@ class _SplashScreenState extends State<SplashScreen>
       end: 0.0,
     ).animate(CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeOut));
 
-    // Phase 3 — Steam (3.5 → 5.5s)
+
+
     _steamCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2000),
     );
     _steamProgress = Tween<double>(begin: 0, end: 1).animate(_steamCtrl);
 
-    // Phase 4 — Tagline (4.5 → 6.0s)
+
+
     _taglineCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -143,7 +157,8 @@ class _SplashScreenState extends State<SplashScreen>
       end: 0,
     ).animate(CurvedAnimation(parent: _taglineCtrl, curve: Curves.easeOut));
 
-    // Phase 5 — Exit (6.5 → 8.0s)
+
+
     _exitCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -226,10 +241,12 @@ class _SplashScreenState extends State<SplashScreen>
           return Stack(
             fit: StackFit.expand,
             children: [
-              // ── Layer 1: Dark background ──────────────────
+
+
               Container(color: kBackground),
 
-              // ── Layer 2: Topographic pattern (slow pan) ───
+
+
               ClipRect(
                 child: CustomPaint(
                   size: size,
@@ -240,7 +257,8 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // ── Layer 3: Radial crimson glow ──────────────
+
+
               Center(
                 child: Container(
                   width: size.width * 0.85,
@@ -257,7 +275,8 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // ── Layer 4: Railway tracks ───────────────────
+
+
               CustomPaint(
                 size: size,
                 painter: RailTrackPainter(
@@ -266,7 +285,8 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // ── Layer 5: Gold pulse ring ──────────────────
+
+
               if (_pulseCtrl.value > 0)
                 Center(
                   child: CustomPaint(
@@ -278,7 +298,8 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
 
-              // ── Layer 6: Logo + Steam + Tagline ──────────
+
+
               Center(
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
@@ -366,7 +387,8 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-              // ── Layer 7: Exit white flash overlay ─────────
+
+
               if (_exitCtrl.value > 0)
                 Opacity(
                   opacity: (_exitOpacity.value * _exitScale.value).clamp(
@@ -386,10 +408,12 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-// ============================================================
+
+
 // RailTrackPainter
 // Draws two converging railway tracks from bottom to center.
-// ============================================================
+
+
 class RailTrackPainter extends CustomPainter {
   final double progress; // 0.0 → 1.0
   final Size screenSize;
@@ -458,10 +482,12 @@ class RailTrackPainter extends CustomPainter {
   bool shouldRepaint(RailTrackPainter old) => old.progress != progress;
 }
 
-// ============================================================
+
+
 // PulseRingPainter
 // Animated expanding gold ring that fades out.
-// ============================================================
+
+
 class PulseRingPainter extends CustomPainter {
   final double radius;
   final double opacity;
@@ -483,10 +509,12 @@ class PulseRingPainter extends CustomPainter {
       old.radius != radius || old.opacity != opacity;
 }
 
-// ============================================================
+
+
 // SteamPainter
 // 8 staggered puffs drifting upward from the locomotive.
-// ============================================================
+
+
 class SteamPainter extends CustomPainter {
   final double progress; // 0.0 → 1.0
 
@@ -529,10 +557,12 @@ class SteamPainter extends CustomPainter {
   bool shouldRepaint(SteamPainter old) => old.progress != progress;
 }
 
-// ============================================================
+
+
 // TopographicPainter
 // Slowly panning topo map pattern — thin lines, very low opacity.
-// ============================================================
+
+
 class TopographicPainter extends CustomPainter {
   final Offset offset;
   final double opacity;
@@ -585,10 +615,12 @@ class TopographicPainter extends CustomPainter {
   bool shouldRepaint(TopographicPainter old) => old.offset != offset;
 }
 
-// ============================================================
+
+
 // _LogoFallback
 // Rendered when logo asset is missing — matches brand identity.
-// ============================================================
+
+
 class _LogoFallback extends StatelessWidget {
   @override
   Widget build(BuildContext context) {

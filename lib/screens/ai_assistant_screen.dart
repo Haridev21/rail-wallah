@@ -3,16 +3,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
-// ─────────────────────────────────────────────
-//  CONFIGURATION
-// ─────────────────────────────────────────────
+
+
 const String _geminiApiKey = 'AIzaSyAZUrl_u9yQjM2n3ZGuWtfdn-l5efCOsGU';
 const String _geminiUrl =
     'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$_geminiApiKey';
 
-// ─────────────────────────────────────────────
-//  SYSTEM PROMPT
-// ─────────────────────────────────────────────
+
+
 const String _systemPrompt = '''
 You are Rail Wallah AI, a friendly and professional AI support assistant for Rail Wallah — a Railway Passenger Support System.
 Your role is to help train passengers with any questions or issues they face during their journey.
@@ -44,9 +42,8 @@ LANGUAGE:
 - Use simple vocabulary; avoid jargon.
 ''';
 
-// ─────────────────────────────────────────────
-//  QUICK-OPTION CHIPS
-// ─────────────────────────────────────────────
+
+
 class _QuickOption {
   final String label;
   final IconData icon;
@@ -97,9 +94,8 @@ const List<_QuickOption> _quickOptions = [
   ),
 ];
 
-// ─────────────────────────────────────────────
-//  DATA MODEL
-// ─────────────────────────────────────────────
+
+
 class _ChatMessage {
   final String text;
   final bool isUser;
@@ -109,9 +105,8 @@ class _ChatMessage {
     : time = DateTime.now();
 }
 
-// ─────────────────────────────────────────────
-//  MAIN SCREEN
-// ─────────────────────────────────────────────
+
+
 class _AiUiState {
   const _AiUiState({
     this.messages = const [],
@@ -204,7 +199,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
         );
   }
 
-  // ── GEMINI API CALL ──────────────────────────
+
+
   Future<String> _callGemini(String userMessage, {int retries = 3}) async {
     final List<Map<String, dynamic>> contents = [];
 
@@ -262,7 +258,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
     throw Exception('Max retries reached. Please try again in a moment.');
   }
 
-  // ── SEND MESSAGE ─────────────────────────────
+
+
   Future<void> _sendMessage(String text) async {
     if (text.trim().isEmpty) return;
     _controller.clear();
@@ -307,9 +304,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
     });
   }
 
-  // ─────────────────────────────────────────────
-  //  BUILD
-  // ─────────────────────────────────────────────
+
+
   @override
   Widget build(BuildContext context) {
     final vm = ref.watch(_aiUiProvider);
@@ -336,7 +332,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-  // ── APP BAR ──────────────────────────────────
+
+
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
       backgroundColor: _primaryRed,
@@ -401,7 +398,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
         );
   }
 
-  // ── CHAT BUBBLE ──────────────────────────────
+
+
   Widget _buildBubble(_ChatMessage msg) {
     final isUser = msg.isUser;
     final isEmergency = !isUser && msg.text.toLowerCase().contains('emergency');
@@ -510,7 +508,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-  // ── QUICK OPTIONS ─────────────────────────────
+
+
   Widget _buildQuickOptions() {
     return Padding(
       padding: const EdgeInsets.only(top: 8, bottom: 4),
@@ -549,7 +548,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-  // ── TYPING INDICATOR ──────────────────────────
+
+
   Widget _buildTypingIndicator() {
     return Align(
       alignment: Alignment.centerLeft,
@@ -579,7 +579,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-  // ── INPUT BAR ────────────────────────────────
+
+
   Widget _buildInputBar() {
     return Container(
       color: Colors.white,
@@ -642,9 +643,8 @@ class _AiScreenState extends ConsumerState<AiScreen>
   }
 }
 
-// ─────────────────────────────────────────────
-//  QUICK CHIP WIDGET
-// ─────────────────────────────────────────────
+
+
 class _QuickChip extends StatelessWidget {
   final _QuickOption option;
   final VoidCallback onTap;
@@ -702,9 +702,8 @@ class _QuickChip extends StatelessWidget {
   }
 }
 
-// ─────────────────────────────────────────────
-//  ANIMATED DOT LOADER
-// ─────────────────────────────────────────────
+
+
 class _DotLoader extends StatefulWidget {
   @override
   State<_DotLoader> createState() => _DotLoaderState();

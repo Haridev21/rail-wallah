@@ -29,7 +29,8 @@ const Map<String, Color> _classColors = {
   'GN': Color(0xFF424242),
 };
 
-// ── Top-level helpers (read from Map or model) ────────────────────────────────
+
+
 String _str(dynamic s, String key) {
   if (s is Map) return (s[key] ?? '').toString();
   try {
@@ -74,7 +75,8 @@ List<String> _classList(dynamic s) {
   return [];
 }
 
-// ── Main screen ───────────────────────────────────────────────────────────────
+
+
 class RouteResultScreen extends StatelessWidget {
   final RouteResult result;
   const RouteResultScreen({super.key, required this.result});
@@ -88,7 +90,8 @@ class RouteResultScreen extends StatelessWidget {
       backgroundColor: AppTheme.backgroundColor,
       body: CustomScrollView(
         slivers: [
-          // App Bar
+          
+
           SliverAppBar(
             expandedHeight: 200,
             floating: false,
@@ -134,11 +137,13 @@ class RouteResultScreen extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Summary
+                  
+
                   _SummaryCard(result: result),
                   const SizedBox(height: 16),
 
-                  // ── All class fares row ────────────────────────────────
+                  
+// ── All class fares row ────────────────────────────────
                   if (result.allClassFares != null &&
                       result.allClassFares!.isNotEmpty)
                     _AllFaresCard(
@@ -146,7 +151,8 @@ class RouteResultScreen extends StatelessWidget {
                       selectedClass: result.fareClass ?? 'SL',
                     ),
 
-                  // ── Budget exceeded warning ────────────────────────────
+                  
+// ── Budget exceeded warning ────────────────────────────
                   if (result.budgetExceeded == true &&
                       result.budgetAlternative != null) ...[
                     const SizedBox(height: 12),
@@ -159,7 +165,8 @@ class RouteResultScreen extends StatelessWidget {
 
                   const SizedBox(height: 24),
 
-                  // Journey header
+                  
+
                   Row(
                     children: [
                       const Icon(
@@ -185,7 +192,8 @@ class RouteResultScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  // ── THE FIX ───────────────────────────────────────────────
+                  
+
                   // seg[i].wait_minutes = wait at seg[i].from BEFORE boarding.
                   // The wait BETWEEN train[i] and train[i+1] is stored on
                   // seg[i+1].wait_minutes and happens at seg[i].to.
@@ -253,7 +261,8 @@ class RouteResultScreen extends StatelessWidget {
   );
 }
 
-// ── Summary card ──────────────────────────────────────────────────────────────
+
+
 class _SummaryCard extends StatelessWidget {
   final RouteResult result;
   const _SummaryCard({required this.result});
@@ -517,7 +526,8 @@ class _SummaryCard extends StatelessWidget {
   );
 }
 
-// ── Segment card ──────────────────────────────────────────────────────────────
+
+
 final _segmentExpandedProvider = StateProvider.family<bool, int>(
   (ref, index) => false,
 );
@@ -630,7 +640,8 @@ class _SegmentCard extends ConsumerWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Timeline
+                  
+
                   Column(
                     children: [
                       _dot(colors[0], large: true),
@@ -718,7 +729,8 @@ class _SegmentCard extends ConsumerWidget {
               ),
             ),
 
-            // ── Info strip ────────────────────────────────────────────────
+            
+
             Container(
               margin: const EdgeInsets.fromLTRB(16, 0, 16, 12),
               padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
@@ -756,7 +768,8 @@ class _SegmentCard extends ConsumerWidget {
               ),
             ),
 
-            // ── Coach chips ───────────────────────────────────────────────
+            
+
             if (classes.isNotEmpty)
               Padding(
                 padding: const EdgeInsets.fromLTRB(16, 0, 16, 14),
@@ -767,7 +780,8 @@ class _SegmentCard extends ConsumerWidget {
                 ),
               ),
 
-            // ── Expand toggle ─────────────────────────────────────────────
+            
+
             InkWell(
               onTap: () {
                 ref.read(_segmentExpandedProvider(index).notifier).state =

@@ -817,7 +817,8 @@ class _SegmentCard extends ConsumerWidget {
               ),
             ),
 
-            // ── Expanded details ──────────────────────────────────────────
+
+
             if (expanded)
               Container(
                 padding: const EdgeInsets.all(16),
@@ -1003,7 +1004,8 @@ class _SegmentCard extends ConsumerWidget {
   );
 }
 
-// ── Wait connector — FIXED ────────────────────────────────────────────────────
+
+
 //
 //  atStation   = seg[i].to          — station where passenger waits
 //  waitMinutes = seg[i+1].wait_minutes — duration of the wait
@@ -1074,7 +1076,8 @@ class _WaitConnector extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ── Top row: icon + station name + wait time badge ────────────
+
+
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -1114,7 +1117,8 @@ class _WaitConnector extends StatelessWidget {
                   ),
                 ),
 
-                // ── WAIT TIME BADGE — what was missing ──────────────────────
+
+
                 if (hasWait)
                   Container(
                     padding: const EdgeInsets.symmetric(
@@ -1151,7 +1155,8 @@ class _WaitConnector extends StatelessWidget {
               ],
             ),
 
-            // ── Bottom row: next train info + departure time ───────────────
+
+
             if (nextTrainNo.isNotEmpty || nextDep.isNotEmpty) ...[
               const SizedBox(height: 10),
               Container(
@@ -1232,7 +1237,8 @@ class _WaitConnector extends StatelessWidget {
               ),
             ],
 
-            // ── Advisory for long waits ───────────────────────────────────
+
+
             if (isVeryLong || isLong) ...[
               const SizedBox(height: 8),
               Container(
@@ -1271,7 +1277,8 @@ class _WaitConnector extends StatelessWidget {
   }
 }
 
-// ── Coach chip ────────────────────────────────────────────────────────────────
+
+
 class _ClassChip extends StatelessWidget {
   final String cls;
   const _ClassChip({required this.cls});
@@ -1298,7 +1305,8 @@ class _ClassChip extends StatelessWidget {
   }
 }
 
-// ── All class fares card ──────────────────────────────────────────────────────
+
+
 class _AllFaresCard extends StatelessWidget {
   final Map<String, dynamic> fares;
   final String selectedClass;
@@ -1408,7 +1416,8 @@ class _AllFaresCard extends StatelessWidget {
   }
 }
 
-// ── Budget alternative card ───────────────────────────────────────────────────
+
+
 class _BudgetAlternativeCard extends StatelessWidget {
   final int budget;
   final int budgetGap;
@@ -1561,7 +1570,8 @@ class _BudgetAlternativeCard extends StatelessWidget {
   );
 }
 
-// ── Fallback for old API (no segments field) ──────────────────────────────────
+
+
 class _LegacyPathView extends StatelessWidget {
   final RouteResult result;
   const _LegacyPathView({required this.result});

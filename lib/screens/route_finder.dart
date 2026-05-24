@@ -1072,7 +1072,8 @@ class _RouteFinderPageState extends ConsumerState<RouteFinderPage>
       Container(height: 36, width: 1, color: Colors.grey[200]);
 }
 
-// ── Animated Loading Dialog ────────────────────────────────────────────────────
+
+
 class _LoadingDialog extends StatefulWidget {
   final String quote;
   const _LoadingDialog({required this.quote});
@@ -1183,7 +1184,8 @@ class _LoadingDialogState extends State<_LoadingDialog>
   }
 }
 
-// ── Station Picker Bottom Sheet ────────────────────────────────────────────────
+
+
 class StationPickerSheet extends ConsumerStatefulWidget {
   final List<String> stations;
   final String title;

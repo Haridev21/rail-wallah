@@ -79,8 +79,7 @@ class _SplashScreenState extends State<SplashScreen>
       end: const Offset(0.15, 0.1),
     ).animate(_bgCtrl);
 
-
-
+    // Phase 1 — Track Reveal (0.0 → 1.5s)
     _trackCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -90,8 +89,7 @@ class _SplashScreenState extends State<SplashScreen>
       end: 1,
     ).animate(CurvedAnimation(parent: _trackCtrl, curve: Curves.easeOut));
 
-
-
+    // Phase 2 — Logo Entrance (1.2 → 3.5s)
     _logoCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2300),
@@ -134,16 +132,14 @@ class _SplashScreenState extends State<SplashScreen>
       end: 0.0,
     ).animate(CurvedAnimation(parent: _pulseCtrl, curve: Curves.easeOut));
 
-
-
+    // Phase 3 — Steam (3.5 → 5.5s)
     _steamCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 2000),
     );
     _steamProgress = Tween<double>(begin: 0, end: 1).animate(_steamCtrl);
 
-
-
+    // Phase 4 — Tagline (4.5 → 6.0s)
     _taglineCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -157,8 +153,7 @@ class _SplashScreenState extends State<SplashScreen>
       end: 0,
     ).animate(CurvedAnimation(parent: _taglineCtrl, curve: Curves.easeOut));
 
-
-
+    // Phase 5 — Exit (6.5 → 8.0s)
     _exitCtrl = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 1500),
@@ -241,11 +236,11 @@ class _SplashScreenState extends State<SplashScreen>
           return Stack(
             fit: StackFit.expand,
             children: [
-
+              
 
               Container(color: kBackground),
 
-
+              
 
               ClipRect(
                 child: CustomPaint(
@@ -257,7 +252,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-
+              
 
               Center(
                 child: Container(
@@ -275,7 +270,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-
+              
 
               CustomPaint(
                 size: size,
@@ -285,7 +280,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-
+              
 
               if (_pulseCtrl.value > 0)
                 Center(
@@ -298,7 +293,7 @@ class _SplashScreenState extends State<SplashScreen>
                   ),
                 ),
 
-
+              
 
               Center(
                 child: Column(
@@ -387,7 +382,7 @@ class _SplashScreenState extends State<SplashScreen>
                 ),
               ),
 
-
+              
 
               if (_exitCtrl.value > 0)
                 Opacity(
@@ -408,10 +403,6 @@ class _SplashScreenState extends State<SplashScreen>
   }
 }
 
-
-
-// RailTrackPainter
-// Draws two converging railway tracks from bottom to center.
 
 
 class RailTrackPainter extends CustomPainter {
@@ -484,10 +475,6 @@ class RailTrackPainter extends CustomPainter {
 
 
 
-// PulseRingPainter
-// Animated expanding gold ring that fades out.
-
-
 class PulseRingPainter extends CustomPainter {
   final double radius;
   final double opacity;
@@ -509,10 +496,6 @@ class PulseRingPainter extends CustomPainter {
       old.radius != radius || old.opacity != opacity;
 }
 
-
-
-// SteamPainter
-// 8 staggered puffs drifting upward from the locomotive.
 
 
 class SteamPainter extends CustomPainter {
@@ -557,10 +540,6 @@ class SteamPainter extends CustomPainter {
   bool shouldRepaint(SteamPainter old) => old.progress != progress;
 }
 
-
-
-// TopographicPainter
-// Slowly panning topo map pattern — thin lines, very low opacity.
 
 
 class TopographicPainter extends CustomPainter {
@@ -615,10 +594,6 @@ class TopographicPainter extends CustomPainter {
   bool shouldRepaint(TopographicPainter old) => old.offset != offset;
 }
 
-
-
-// _LogoFallback
-// Rendered when logo asset is missing — matches brand identity.
 
 
 class _LogoFallback extends StatelessWidget {

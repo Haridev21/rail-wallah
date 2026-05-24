@@ -143,7 +143,7 @@ class RouteResultScreen extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   
-// ── All class fares row ────────────────────────────────
+
                   if (result.allClassFares != null &&
                       result.allClassFares!.isNotEmpty)
                     _AllFaresCard(
@@ -152,7 +152,7 @@ class RouteResultScreen extends StatelessWidget {
                     ),
 
                   
-// ── Budget exceeded warning ────────────────────────────
+
                   if (result.budgetExceeded == true &&
                       result.budgetAlternative != null) ...[
                     const SizedBox(height: 12),
@@ -192,12 +192,6 @@ class RouteResultScreen extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
 
-                  
-
-                  // seg[i].wait_minutes = wait at seg[i].from BEFORE boarding.
-                  // The wait BETWEEN train[i] and train[i+1] is stored on
-                  // seg[i+1].wait_minutes and happens at seg[i].to.
-                  // So the connector reads from the NEXT segment, not current.
                   if (hasSegments)
                     ...List.generate(segments.length, (i) {
                       final seg = segments[i];
@@ -582,7 +576,8 @@ class _SegmentCard extends ConsumerWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // ── Header ────────────────────────────────────────────────────
+            
+
             Container(
               padding: const EdgeInsets.fromLTRB(16, 14, 16, 14),
               decoration: BoxDecoration(
@@ -634,7 +629,8 @@ class _SegmentCard extends ConsumerWidget {
               ),
             ),
 
-            // ── From / To with departure and arrival times ────────────────
+            
+
             Padding(
               padding: const EdgeInsets.all(16),
               child: Row(
@@ -664,7 +660,8 @@ class _SegmentCard extends ConsumerWidget {
                   Expanded(
                     child: Column(
                       children: [
-                        // FROM row
+                        
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -687,7 +684,8 @@ class _SegmentCard extends ConsumerWidget {
 
                         const SizedBox(height: 52),
 
-                        // TO row
+                        
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
@@ -817,7 +815,7 @@ class _SegmentCard extends ConsumerWidget {
               ),
             ),
 
-
+            
 
             if (expanded)
               Container(
@@ -851,7 +849,8 @@ class _SegmentCard extends ConsumerWidget {
                         'Arrives +$dayOff day${dayOff > 1 ? "s" : ""}',
                       ),
                     ],
-                    // Fare for this segment
+                    
+
                     Builder(
                       builder: (_) {
                         final fare = _int(s, 'fare');
@@ -1006,14 +1005,6 @@ class _SegmentCard extends ConsumerWidget {
 
 
 
-//
-//  atStation   = seg[i].to          — station where passenger waits
-//  waitMinutes = seg[i+1].wait_minutes — duration of the wait
-//  waitStr     = seg[i+1].wait_str  — "2h 15m"
-//  warning     = seg[i+1].wait_warning — "long" / "very_long" / ""
-//  nextTrainNo = seg[i+1].train_no  — train to board next
-//  nextDep     = seg[i+1].dep_ampm  — departure time of next train
-//
 class _WaitConnector extends StatelessWidget {
   final String atStation;
   final int waitMinutes;
@@ -1039,7 +1030,8 @@ class _WaitConnector extends StatelessWidget {
     final isLong = warning == 'long';
     final hasWait = waitMinutes > 0;
 
-    // Colour scheme based on severity
+    
+
     final Color bg, border, iconColor, textColor;
     final IconData icon;
 
@@ -1076,12 +1068,13 @@ class _WaitConnector extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-
+            
 
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Icon circle
+                
+
                 Container(
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
@@ -1092,7 +1085,8 @@ class _WaitConnector extends StatelessWidget {
                 ),
                 const SizedBox(width: 10),
 
-                // Station label
+                
+
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -1117,7 +1111,7 @@ class _WaitConnector extends StatelessWidget {
                   ),
                 ),
 
-
+                
 
                 if (hasWait)
                   Container(
@@ -1155,7 +1149,7 @@ class _WaitConnector extends StatelessWidget {
               ],
             ),
 
-
+            
 
             if (nextTrainNo.isNotEmpty || nextDep.isNotEmpty) ...[
               const SizedBox(height: 10),
@@ -1237,7 +1231,7 @@ class _WaitConnector extends StatelessWidget {
               ),
             ],
 
-
+            
 
             if (isVeryLong || isLong) ...[
               const SizedBox(height: 8),
@@ -1453,7 +1447,8 @@ class _BudgetAlternativeCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          // Header
+          
+
           Row(
             children: [
               Container(
@@ -1498,7 +1493,8 @@ class _BudgetAlternativeCard extends StatelessWidget {
           Container(height: 1, color: Colors.orange.shade100),
           const SizedBox(height: 12),
 
-          // Suggestion box
+          
+
           Container(
             padding: const EdgeInsets.all(12),
             decoration: BoxDecoration(
@@ -1524,7 +1520,8 @@ class _BudgetAlternativeCard extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 10),
-                // Chips row
+                
+
                 Wrap(
                   spacing: 6,
                   runSpacing: 6,

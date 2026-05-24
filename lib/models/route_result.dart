@@ -1,12 +1,12 @@
-// models/route_result.dart
-// Updated to include fare, budget, date fields from new app.py
+
+
 
 class RouteResult {
   final bool? found;
   final String? source;
   final String? destination;
   final String? travelDay;
-  final String? travelDate; // NEW: "2026-03-15"
+  final String? travelDate;
   final String? startTime;
   final String? totalTime;
   final String? travelTime;
@@ -22,11 +22,11 @@ class RouteResult {
 
   
 
-  final int? fare; // total estimated fare Rs
-  final String? fareClass; // class used e.g. "SL"
-  final String? fareBreakdown; // e.g. "Rs135 + Rs90 = Rs225"
-  final List<dynamic>? farePerSegment; // [{train_no, class, fare, distance_km}]
-  final Map<String, dynamic>? allClassFares; // {"SL":135,"3A":235,"2A":420}
+  final int? fare;
+  final String? fareClass;
+  final String? fareBreakdown;
+  final List<dynamic>? farePerSegment;
+  final Map<String, dynamic>? allClassFares;
 
   
 
@@ -72,7 +72,8 @@ class RouteResult {
           .toList();
     }
 
-    // Attach per-segment fare info into the segment maps so _SegmentCard can read it
+    
+
     final segs = j['segments'] as List?;
     final farePS = j['fare_per_segment'] as List?;
     if (segs != null && farePS != null) {

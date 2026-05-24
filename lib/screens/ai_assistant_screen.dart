@@ -4,7 +4,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 
-
 const String _geminiApiKey = 'AIzaSyAZUrl_u9yQjM2n3ZGuWtfdn-l5efCOsGU';
 const String _geminiUrl =
     'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$_geminiApiKey';
@@ -199,7 +198,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
         );
   }
 
-
+  
 
   Future<String> _callGemini(String userMessage, {int retries = 3}) async {
     final List<Map<String, dynamic>> contents = [];
@@ -258,7 +257,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
     throw Exception('Max retries reached. Please try again in a moment.');
   }
 
-
+  
 
   Future<void> _sendMessage(String text) async {
     if (text.trim().isEmpty) return;
@@ -304,8 +303,6 @@ class _AiScreenState extends ConsumerState<AiScreen>
     });
   }
 
-
-
   @override
   Widget build(BuildContext context) {
     final vm = ref.watch(_aiUiProvider);
@@ -332,7 +329,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-
+  
 
   PreferredSizeWidget _buildAppBar() {
     return AppBar(
@@ -398,7 +395,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
         );
   }
 
-
+  
 
   Widget _buildBubble(_ChatMessage msg) {
     final isUser = msg.isUser;
@@ -508,7 +505,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-
+  
 
   Widget _buildQuickOptions() {
     return Padding(
@@ -548,7 +545,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-
+  
 
   Widget _buildTypingIndicator() {
     return Align(
@@ -579,7 +576,7 @@ class _AiScreenState extends ConsumerState<AiScreen>
     );
   }
 
-
+  
 
   Widget _buildInputBar() {
     return Container(

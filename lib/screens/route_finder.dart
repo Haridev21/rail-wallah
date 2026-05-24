@@ -1236,7 +1236,8 @@ class _StationPickerSheetState extends ConsumerState<StationPickerSheet> {
       ),
       child: Column(
         children: [
-          // Handle
+          
+
           Container(
             margin: const EdgeInsets.only(top: 12),
             width: 40,
@@ -1246,7 +1247,8 @@ class _StationPickerSheetState extends ConsumerState<StationPickerSheet> {
               borderRadius: BorderRadius.circular(2),
             ),
           ),
-          // Title row
+          
+
           Padding(
             padding: const EdgeInsets.fromLTRB(20, 16, 12, 0),
             child: Row(
@@ -1268,7 +1270,8 @@ class _StationPickerSheetState extends ConsumerState<StationPickerSheet> {
               ],
             ),
           ),
-          // Search
+          
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
             child: Container(
@@ -1291,7 +1294,8 @@ class _StationPickerSheetState extends ConsumerState<StationPickerSheet> {
               ),
             ),
           ),
-          // List
+          
+
           Expanded(
             child: filtered.isEmpty
                 ? Center(

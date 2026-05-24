@@ -2,9 +2,8 @@
 
 import '../models/coach_config.dart';
 
-// ---------------------------------------------------------------------------
-// CONSIST BUILDERS
-// ---------------------------------------------------------------------------
+
+
 
 List<CoachConfig> _rajdhaniConsist() => [
   const CoachConfig(label: 'ENG', type: CoachType.engine, rows: 0),
@@ -266,9 +265,8 @@ List<CoachConfig> _defaultConsist() => [
   const CoachConfig(label: 'GRD', type: CoachType.guard, rows: 0),
 ];
 
-// ---------------------------------------------------------------------------
-// LOOKUP MAPS
-// ---------------------------------------------------------------------------
+
+
 
 const Map<String, String> kTrainNumberToTemplate = {
   '12951': 'rajdhani',
@@ -317,9 +315,8 @@ const Map<String, String> kNameKeywordToTemplate = {
   'gatimaan': 'shatabdi',
 };
 
-// ---------------------------------------------------------------------------
-// PUBLIC RESOLVER
-// ---------------------------------------------------------------------------
+
+
 
 List<CoachConfig> getCoachTemplate(String trainNo, String trainName) {
   final template = kTrainNumberToTemplate[trainNo.trim()];

@@ -48,19 +48,23 @@ class EmergencyScreen extends StatelessWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Emergency Alert Card
+              
+
               _buildEmergencyAlertCard(),
               const SizedBox(height: 20),
 
-              // Register Complaint - NEW FEATURE
+              
+
               _buildComplaintCard(context),
               const SizedBox(height: 16),
 
-              // Track Complaint - NEW FEATURE
+              
+
               _buildTrackComplaintCard(context),
               const SizedBox(height: 16),
 
-              // Report an Issue
+              
+
               _buildExpandableCard(
                 title: 'Report Safety Issue',
                 subtitle:
@@ -69,7 +73,8 @@ class EmergencyScreen extends StatelessWidget {
               ),
               const SizedBox(height: 16),
 
-              // Nearest Help
+              
+
               _buildExpandableCard(
                 title: 'Nearest Help',
                 subtitle:
@@ -149,7 +154,8 @@ class EmergencyScreen extends StatelessWidget {
     );
   }
 
-  // NEW: Register Complaint Card
+  
+
   Widget _buildComplaintCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -222,7 +228,8 @@ class EmergencyScreen extends StatelessWidget {
     );
   }
 
-  // NEW: Track Complaint Card
+  
+
   Widget _buildTrackComplaintCard(BuildContext context) {
     return Container(
       padding: const EdgeInsets.all(16),
@@ -411,7 +418,8 @@ class EmergencyScreen extends StatelessWidget {
   }
 }
 
-// NEW: Register Complaint Screen - Following Sequence Diagram
+
+
 final _registerSelectedCategoryProvider = StateProvider.autoDispose<String?>(
   (ref) => null,
 );
@@ -463,7 +471,8 @@ class _RegisterComplaintScreenState
     super.dispose();
   }
 
-  // Following sequence diagram flow
+  
+
   Future<void> _submitComplaint() async {
     if (!_formKey.currentState!.validate()) {
       ScaffoldMessenger.of(context).showSnackBar(
@@ -478,8 +487,10 @@ class _RegisterComplaintScreenState
     ref.read(_registerIsSubmittingProvider.notifier).state = true;
 
     try {
-      // Following sequence diagram flow:
-      // 1. Submit complaint data to Backend API (Firestore in this case)
+      
+
+      
+
       final docRef = await FirebaseFirestore.instance
           .collection('complaints')
           .add({
@@ -493,13 +504,15 @@ class _RegisterComplaintScreenState
             'lastUpdated': FieldValue.serverTimestamp(),
           });
 
-      // 2. Local representation of the generated ID
+      
+
       final complaintId = docRef.id;
 
       ref.read(_registerIsSubmittingProvider.notifier).state = false;
 
       if (mounted) {
-        // Show success message with complaint details
+        
+
         _showSuccessDialog(complaintId);
       }
     } catch (e) {
@@ -649,7 +662,8 @@ class _RegisterComplaintScreenState
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Info Card
+                
+
                 Container(
                   padding: const EdgeInsets.all(16),
                   decoration: BoxDecoration(
@@ -696,7 +710,8 @@ class _RegisterComplaintScreenState
                 ),
                 const SizedBox(height: 24),
 
-                // Complaint Category
+                
+
                 const Text(
                   'Complaint Category *',
                   style: TextStyle(
@@ -740,7 +755,8 @@ class _RegisterComplaintScreenState
                 ),
                 const SizedBox(height: 16),
 
-                // Train Number
+                
+
                 const Text(
                   'Train Number *',
                   style: TextStyle(
@@ -775,7 +791,8 @@ class _RegisterComplaintScreenState
                 ),
                 const SizedBox(height: 16),
 
-                // Coach Number
+                
+
                 const Text(
                   'Coach Number (Optional)',
                   style: TextStyle(

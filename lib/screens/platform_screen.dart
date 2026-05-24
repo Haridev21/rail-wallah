@@ -162,7 +162,7 @@ class PlatformScreen extends StatelessWidget {
     );
   }
 
-
+  
 
   void _onStationTapped(BuildContext context, Station station) {
     showModalBottomSheet(
@@ -196,7 +196,7 @@ class PlatformScreen extends StatelessWidget {
     );
   }
 
-
+  
 
   void _showDestinationPicker(
     BuildContext context,

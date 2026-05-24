@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-// Firebase imports
 import 'package:firebase_core/firebase_core.dart';
 import 'package:test_project/screens/splash_screen.dart';
 import 'firebase_options.dart';

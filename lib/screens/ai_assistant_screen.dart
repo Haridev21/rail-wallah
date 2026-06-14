@@ -4,9 +4,9 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:http/http.dart' as http;
 
 
-const String _geminiApiKey = 'AIzaSyAZUrl_u9yQjM2n3ZGuWtfdn-l5efCOsGU';
+const String _geminiApiKey = '';
 const String _geminiUrl =
-    'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=$_geminiApiKey';
+    '';
 
 
 
